@@ -8,7 +8,7 @@ public class main {
 
     static String monName;
     static int monHealth, monAttack, monSpeed, encounterCount;
-    static int plaHealth=1, plaAttack=5, plaSpeed=5;
+    //static int plaHealth=10, plaAttack=5, plaSpeed=5;
 
     public static void main(String[] args) {
         boolean isOver = false;
@@ -20,7 +20,7 @@ public class main {
         while (!isOver) {
 
                 while (encounterCount <= 2) {
-                    if (plaHealth >0) {
+                    if (Player.getPlaHealth >0) {
                         getEncounter();
                         encounterCount += 1;
                     } else {
@@ -37,7 +37,7 @@ public class main {
         }
     }
 
-    public static void getEncounter() {
+/*    public static void getEncounter() {
         int choice;
         boolean goodVal,encountOver;
 
@@ -78,8 +78,8 @@ public class main {
         }
         //add up to three encounters
         //
-    }
-
+    }*/
+/*
     public static void getMonster() {
 
         int encounterNum = new Random().nextInt(5 - 1 + 1) + 1;
@@ -114,9 +114,9 @@ public class main {
             monAttack = 5;
             monSpeed = 5;
         }
-    }
+    }*/
 
-    public static boolean combat() {
+/*    public static boolean combat() {
         boolean comOver;
         int attackNum = new Random().nextInt(plaAttack - 1 + 1) + 1;
 
@@ -133,9 +133,9 @@ public class main {
             comOver=false;
         }
         return comOver;
-    }
+    }*/
 
-    public static boolean run() {
+/*    public static boolean run() {
         boolean runOver;
         int runNum = new Random().nextInt(5-1+1)+1;
         System.out.println("With your run of 5, you tried running away from the "+ monName +" for "+runNum+"!");
@@ -149,13 +149,13 @@ public class main {
             runOver = false;
         }
         return runOver;
-    }
+    }*/
 
-    private static void defend() {
+/*    private static void defend() {
         int monAttNum = new Random().nextInt(monAttack-1+1)+1;
         plaHealth -= monAttNum;
         System.out.println("The "+ monName +" attacks you for "+monAttNum+"! Your health is at "+plaHealth+"!");
         System.out.println("");
-    }
+    }*/
 
 }
