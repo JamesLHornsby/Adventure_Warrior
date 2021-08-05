@@ -1,14 +1,21 @@
 package game;
 
-import java.util.Random;
 import java.util.Scanner;
 
-public class main {
-    static Scanner sc = new Scanner(System.in);
+public class Main {
+    public static Main main = new Main();
+    public static Encounter encounter = Encounter.getInstance();
+    public static Player player = Player.getInstance();
+
+
 
     static String monName;
     static int monHealth, monAttack, monSpeed, encounterCount;
     //static int plaHealth=10, plaAttack=5, plaSpeed=5;
+
+    public Main() {
+
+    }
 
     public static void main(String[] args) {
         boolean isOver = false;
@@ -20,8 +27,8 @@ public class main {
         while (!isOver) {
 
                 while (encounterCount <= 2) {
-                    if (Player.getPlaHealth >0) {
-                        getEncounter();
+                    if (player.getPlaHealth() >0) {
+                        encounter.getEncounter();
                         encounterCount += 1;
                     } else {
                         encounterCount = 3; //so game is over.
@@ -30,7 +37,7 @@ public class main {
                 isOver = true;
 
         }
-        if (plaHealth > 0) {
+        if (player.getPlaHealth() > 0) {
             System.out.println("Good adventuring! The game is complete.");
         } else {
             System.out.println("You gave it your best, but your health is too low. Game over.");

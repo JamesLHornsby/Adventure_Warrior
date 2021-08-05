@@ -1,6 +1,8 @@
 package game;
 
 public class Player {
+
+    private static Player player;
     public int plaHealth;
     public int plaAttack;
     public int plaSpeed;
@@ -9,6 +11,12 @@ public class Player {
         this.plaHealth = 10;
         this.plaAttack = 5;
         this.plaSpeed = 5;
+    }
+    public static Player getInstance() {
+        if (null == player) {
+            player = new Player();
+        }
+        return player;
     }
 
     public int getPlaHealth() {

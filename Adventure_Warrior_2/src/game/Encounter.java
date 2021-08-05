@@ -1,17 +1,36 @@
 package game;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Encounter() {
+
+    private static Encounter encounter;
+    static Scanner sc = new Scanner(System.in);
     int choice;
     boolean goodVal,encountOver;
 
-    public class getEncounter() {
+    private Encounter() {
 
-        Monster monster = Monster.getMonster();
+    }
+    public static Encounter getInstance() {
+        if (null == encounter) {
+            encounter = new Encounter();
+        }
+        return encounter;
+    }
 
-        System.out.println("You encounter a "+monName +" with a health of "+String.valueOf(monHealth)+
-                " and an attack of "+String.valueOf(monAttack)+"! Watch out!");
+    public void getEncounter() {
+
+        Monster monstie = new Monster();
+        String monstieName = monstie.monName;
+        int monstieHealth = monstie.monHealth;
+        int monstieAttack = monstie.monAttack;
+        int monstieSpeed = monstie.monSpeed;
+
+
+        System.out.println("You encounter a "+monstieName +" with a health of "+String.valueOf(monstieHealth)+
+                " and an attack of "+String.valueOf(monstieAttack)+"! Watch out!");
 
         goodVal =false;
         encountOver =false;
@@ -49,9 +68,9 @@ public class Encounter() {
         }
 
         private static void defend() {
-            int monAttNum = new Random().nextInt(monAttack - 1 + 1) + 1;
+            int monAttNum = new Random().nextInt(monstieAttack - 1 + 1) + 1;
             plaHealth -= monAttNum;
-            System.out.println("The " + monName + " attacks you for " + monAttNum + "! Your health is at " + plaHealth + "!");
+            System.out.println("The " + monstieName + " attacks you for " + monAttNum + "! Your health is at " + plaHealth + "!");
             System.out.println("");
         }
     }
