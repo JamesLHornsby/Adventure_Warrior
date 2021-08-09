@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Main main = new Main();
-    public static Encounter encounter = Encounter.getInstance();
-    public static Player player = Player.getInstance();
+    //public static Player player = Player.getInstance();
 
 
 
@@ -20,6 +19,7 @@ public class Main {
     public static void main(String[] args) {
         boolean isOver = false;
         boolean ifWon = false;
+        //Player.setPlaHealth(10);
         System.out.println("");
         System.out.println("Welcome to Adventure Warrior 2! " +
                 "You step outside of your Adventurer's house and face a world of adventure!");
@@ -27,7 +27,8 @@ public class Main {
         while (!isOver) {
 
                 while (encounterCount <= 2) {
-                    if (player.getPlaHealth() >0) {
+                    if (Player.getPlaHealth() >0) {
+                        Encounter encounter = new Encounter();
                         encounter.getEncounter();
                         encounterCount += 1;
                     } else {
@@ -37,7 +38,7 @@ public class Main {
                 isOver = true;
 
         }
-        if (player.getPlaHealth() > 0) {
+        if (Player.getPlaHealth() > 0) {
             System.out.println("Good adventuring! The game is complete.");
         } else {
             System.out.println("You gave it your best, but your health is too low. Game over.");

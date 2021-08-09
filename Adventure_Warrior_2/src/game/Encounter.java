@@ -3,24 +3,26 @@ package game;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Encounter() {
-
-    private static Encounter encounter;
+public class Encounter {
+    //public static Player player = new Player();
     static Scanner sc = new Scanner(System.in);
     int choice;
     boolean goodVal,encountOver;
 
-    private Encounter() {
+/*    int plaHealth = Player.getPlaHealth();
+    int plaAttack = Player.getPlaAttack();
+    int plaSpeed = Player.getPlaSpeed();*/
 
+    Encounter() {
+        getEncounter();
     }
-    public static Encounter getInstance() {
-        if (null == encounter) {
-            encounter = new Encounter();
-        }
-        return encounter;
-    }
+
 
     public void getEncounter() {
+
+/*        int plaHealth = Player.getPlaHealth();
+        int plaAttack = Player.getPlaAttack();
+        int plaSpeed = Player.getPlaSpeed();*/
 
         Monster monstie = new Monster();
         String monstieName = monstie.monName;
@@ -39,6 +41,11 @@ public class Encounter() {
         {
             while (!encountOver) {
                 try {
+                    int plaHealth = Player.getPlaHealth();
+                    int plaAttack = Player.getPlaAttack();
+                    int plaSpeed = Player.getPlaSpeed();
+                    
+
                     System.out.print("What do you do? [1. Fight 2. Run] ");
                     choice = sc.nextInt();
                     if (choice > 2 || choice < 1) {
@@ -46,15 +53,20 @@ public class Encounter() {
                         goodVal = false;
                     } else if (choice == 1) {
                         goodVal = true;
-                        encountOver = combat();
+                        Action action = new Action(plaHealth,plaAttack,plaSpeed,monstieName,monstieHealth,monstieAttack,monstieSpeed);
+                        encountOver = action.getCombat();
+
                     } else {
                         goodVal = true;
-                        encountOver = run();
+                        Action action = new Action(plaHealth,plaAttack,plaSpeed,monstieName,monstieHealth,monstieAttack,monstieSpeed);
+                        encountOver = action.getRun();
+//                        encountOver = run();
                     }
                     if (!encountOver) {
                         System.out.println("The Monster attacks!");
-                        defend();
-                        if (Player.getPlaHealth <= 0) {
+                        Action action = new Action(plaHealth,plaAttack,plaSpeed,monstieName,monstieHealth,monstieAttack,monstieSpeed);
+                        action.getDefend();
+                        if (plaHealth <= 0) {
                             encountOver = true;
                         }
                     }
@@ -66,12 +78,6 @@ public class Encounter() {
             }
 
         }
-
-        private static void defend() {
-            int monAttNum = new Random().nextInt(monstieAttack - 1 + 1) + 1;
-            plaHealth -= monAttNum;
-            System.out.println("The " + monstieName + " attacks you for " + monAttNum + "! Your health is at " + plaHealth + "!");
-            System.out.println("");
-        }
     }
+
 }
